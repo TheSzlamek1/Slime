@@ -2,39 +2,40 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Sklep z Kluczami</title>
+<title>GameMarket - Sklep z grami</title>
 <link rel="stylesheet" href="css/style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
-<header class="header">
-  <div class="container">
-    <h1>Twój Sklep z Kluczami</h1>
-    <nav>
-      <a href="index.html">Strona główna</a>
-      <a href="cart.html"><i class="fa fa-shopping-cart"></i> Koszyk</a>
-      <a href="account.html"><i class="fa fa-user"></i> Konto</a>
-    </nav>
-  </div>
+<header>
+  <div class="logo">GameMarket</div>
+  <nav>
+    <input type="text" id="search" placeholder="Szukaj gry...">
+    <a href="login.html"><i class="fa fa-user"></i></a>
+    <a href="cart.html"><i class="fa fa-shopping-cart"></i><span id="cart-count">0</span></a>
+  </nav>
 </header>
 
-<section class="products container">
-  <div class="product" data-id="1">
-    <img src="images/game1.jpg" alt="Gra 1">
-    <h3>Klucz do Gry 1</h3>
-    <p class="price">49,99 PLN</p>
-    <button class="add-to-cart">Dodaj do koszyka</button>
-  </div>
+<section class="filter-bar">
+  <select id="filter-platform">
+    <option value="all">Platforma: Wszystkie</option>
+    <option value="steam">Steam</option>
+    <option value="epic">Epic Games</option>
+  </select>
 
-  <div class="product" data-id="2">
-    <img src="images/game2.jpg" alt="Gra 2">
-    <h3>Klucz do Gry 2</h3>
-    <p class="price">29,99 PLN</p>
-    <button class="add-to-cart">Dodaj do koszyka</button>
-  </div>
+  <select id="filter-price">
+    <option value="all">Cena: Wszystkie</option>
+    <option value="low">0 - 50 zł</option>
+    <option value="mid">50 - 150 zł</option>
+    <option value="high">150+ zł</option>
+  </select>
 </section>
 
+<section class="products" id="product-list"></section>
+
+<script src="js/data.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
+
