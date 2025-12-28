@@ -2,40 +2,53 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>GameMarket - Sklep z grami</title>
+<title>GameMarket</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
-<header>
-  <div class="logo">GameMarket</div>
-  <nav>
+
+<div class="top-info">
+  🏆 Świąteczna Promocja — Najlepsze gry w super cenach! 🎮
+</div>
+
+<header class="main-header">
+  <div class="logo">GameMarket<span class="logo-dot">.PL</span></div>
+
+  <div class="header-buttons">
+    <button class="btn btn-blue"><i class="fa fa-gift"></i> Promocje</button>
+    <button class="btn btn-purple"><i class="fa fa-coins"></i> Zarabiaj</button>
+    <button class="btn btn-green"><i class="fa fa-tags"></i> Tanie Gry</button>
+  </div>
+
+  <div class="search-box">
     <input type="text" id="search" placeholder="Szukaj gry...">
-    <a href="login.html"><i class="fa fa-user"></i></a>
-    <a href="cart.html"><i class="fa fa-shopping-cart"></i><span id="cart-count">0</span></a>
-  </nav>
+    <i class="fa fa-search"></i>
+  </div>
+
+  <div class="header-right">
+    <span class="currency">PLN <i class="fa fa-angle-down"></i></span>
+    <a class="cart-btn" href="cart.html"><i class="fa fa-shopping-cart"></i><span id="cart-count">0</span></a>
+    <a class="login-btn" href="login.html">Zaloguj się</a>
+    <a class="register-btn" href="register.html">Zarejestruj</a>
+  </div>
 </header>
 
-<section class="filter-bar">
-  <select id="filter-platform">
-    <option value="all">Platforma: Wszystkie</option>
-    <option value="steam">Steam</option>
-    <option value="epic">Epic Games</option>
-  </select>
+<nav class="category-nav">
+  <a>Bestsellery</a>
+  <div class="dropdown">Gry <i class="fa fa-angle-down"></i></div>
+  <a>Software</a>
+  <a>Karty Pre-Paid</a>
+  <div class="dropdown">Fragmenty <i class="fa fa-angle-down"></i></div>
+  <a class="sale-badge"><i class="fa fa-bolt"></i> Tanie Konta</a>
+  <a><i class="fa fa-steam"></i> Steam Gift Cards</a>
+  <a><i class="fa fa-xbox"></i> Game Pass</a>
+  <a><i class="fa fa-trophy"></i> Awards</a>
+</nav>
 
-  <select id="filter-price">
-    <option value="all">Cena: Wszystkie</option>
-    <option value="low">0 - 50 zł</option>
-    <option value="mid">50 - 150 zł</option>
-    <option value="high">150+ zł</option>
-  </select>
-</section>
-
-<section class="products" id="product-list"></section>
-
-<script src="js/data.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
+
 
