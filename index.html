@@ -2,153 +2,161 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>NAZWA – Premium Game Store</title>
+<title>K4G Style Store</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-/* ==== BASE ==== */
 *{box-sizing:border-box}
 body{
 margin:0;
-font-family:"Segoe UI",Arial;
-background:radial-gradient(circle at top,#171933 0%,#0b0d1a 60%);
-color:#e6e6eb}
-a{text-decoration:none;color:inherit}
-
-/* ==== TOP ==== */
-.top-promo{
-background:linear-gradient(90deg,#c81515,#ff3b3b);
-padding:7px;
-font-size:13px;
-font-weight:800;
-text-align:center}
-
-/* ==== HEADER ==== */
-.k4g-header{
-display:grid;
-grid-template-columns:auto 1fr auto;
-align-items:center;
-padding:18px 40px;
-background:linear-gradient(180deg,#13152e,#0e1022);
-border-bottom:1px solid #1f2140}
-.header-left{display:flex;gap:12px;align-items:center}
-.logo{font-size:34px;font-weight:900}
-.pill{
-background:#1b1d3a;
-padding:8px 14px;
-border-radius:999px;
-font-size:13px}
-.header-center{position:relative;max-width:520px;width:100%}
-.header-center input{
-width:100%;
-padding:12px 16px 12px 42px;
-border-radius:12px;
-border:none;
-background:#1b1d3a;
+font-family:Inter,Segoe UI,Arial;
+background:radial-gradient(circle at top,#1b1f4a 0%,#070815 60%);
 color:#fff}
-.header-center i{
-position:absolute;
-top:50%;
-left:14px;
-transform:translateY(-50%);
-opacity:.7}
-.header-right{display:flex;gap:10px;align-items:center}
-.select{
-background:#1b1d3a;
-padding:8px 12px;
-border-radius:999px;
-border:none;
-color:#fff}
-.cart-btn{
-background:#1b1d3a;
-padding:8px 14px;
-border-radius:999px;
-cursor:pointer;
-position:relative}
-#cartCount{
-position:absolute;
-top:-6px;
-right:-6px;
-background:#37c807;
-font-size:11px;
-padding:2px 6px;
-border-radius:50%}
 
-/* ==== NAV ==== */
-nav{
-display:flex;
-gap:28px;
-padding:15px 40px;
-background:#14162f;
-border-bottom:1px solid #1f2140}
-
-/* ==== PRODUCTS ==== */
-.products{
-padding:40px;
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-gap:30px}
-.product{
-background:linear-gradient(180deg,#1a1c3b,#14162f);
-border-radius:16px;
-border:1px solid #262965;
-overflow:hidden}
-.product img{width:100%;height:160px;object-fit:cover}
-.product h4{padding:14px;font-size:15px}
-.price{
-margin:10px 14px;
-background:linear-gradient(90deg,#ff3b3b,#ff6b6b);
-padding:9px;
-border-radius:10px;
+/* TOP BAR */
+.topbar{
+background:#b82025;
+padding:6px;
 text-align:center;
+font-size:13px;
+font-weight:800}
+
+/* HEADER */
+header{
+display:grid;
+grid-template-columns:auto auto 1fr auto;
+gap:18px;
+align-items:center;
+padding:20px 40px}
+.logo{
+font-size:34px;
 font-weight:900}
-.add{
-margin:0 14px 16px;
-width:calc(100% - 28px);
-padding:12px;
+.actions span{
+background:#1e214b;
+padding:8px 14px;
+border-radius:999px;
+margin-right:8px;
+font-size:13px}
+.search{
+position:relative}
+.search input{
+width:420px;
+padding:14px 16px 14px 44px;
+border-radius:14px;
 border:none;
-border-radius:10px;
-background:linear-gradient(90deg,#00d162,#00ff87);
-font-weight:900;
+background:#1e214b;
+color:#fff}
+.search i{
+position:absolute;
+left:16px;
+top:50%;
+transform:translateY(-50%)}
+.header-right{
+display:flex;
+gap:12px;
+align-items:center}
+.select{
+background:#1e214b;
+border:none;
+color:#fff;
+padding:8px 12px;
+border-radius:999px}
+.cart-btn{
+position:relative;
+background:#ff3b3b;
+padding:10px 14px;
+border-radius:12px;
 cursor:pointer}
 
-/* ==== CART ==== */
+/* MAIN */
+.main{
+padding:40px}
+.title{
+font-size:30px;
+font-weight:900}
+.subtitle{
+opacity:.7;
+margin-bottom:30px}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr) 1.3fr;
+gap:24px}
+
+/* CARD */
+.card{
+background:#15183a;
+border-radius:16px;
+overflow:hidden;
+position:relative}
+.card img{
+width:100%;
+height:220px;
+object-fit:cover}
+.badge{
+position:absolute;
+top:12px;
+left:12px;
+background:#ff3b3b;
+padding:4px 10px;
+border-radius:999px;
+font-size:11px;
+font-weight:800}
+.card h4{
+padding:14px;
+font-size:14px;
+min-height:44px}
+.icons{
+display:flex;
+gap:8px;
+padding:0 14px;
+opacity:.7}
+.price{
+padding:14px;
+display:flex;
+align-items:center;
+gap:10px}
+.old{
+text-decoration:line-through;
+opacity:.5}
+.new{
+font-weight:900}
+.discount{
+background:#2ecc71;
+padding:4px 8px;
+border-radius:999px;
+font-size:12px}
+.buy{
+margin:0 14px 16px;
+background:#2c6cff;
+border:none;
+color:#fff;
+padding:12px;
+border-radius:10px;
+width:calc(100% - 28px);
+cursor:pointer}
+
+/* PROMO */
+.promo{
+background:url("https://i.imgur.com/Y3xZQZJ.jpg") center/cover;
+border-radius:18px;
+padding:30px;
+display:flex;
+flex-direction:column;
+justify-content:space-between}
+
+/* CART */
 .cart{
 position:fixed;
 top:0;
 right:-380px;
 width:380px;
-height:100vh;
-background:linear-gradient(180deg,#16183a,#101226);
+height:100%;
+background:#0d0f25;
 padding:20px;
 transition:.35s;
-z-index:1000;
-display:flex;
-flex-direction:column}
+z-index:10}
 .cart.active{right:0}
-.cart-item{
-display:flex;
-gap:10px;
-background:#1e214d;
-padding:8px;
-border-radius:8px;
-margin-bottom:10px}
-.cart-item img{width:52px;height:52px;border-radius:6px}
-.qty{display:flex;gap:6px;margin-top:4px}
-.qty button{
-background:#ff3b3b;
-border:none;
-color:#fff;
-width:22px;
-height:22px;
-border-radius:4px;
-cursor:pointer}
-.cart-total{
-margin-top:auto;
-background:#0b0d1a;
-padding:14px;
-text-align:center;
-border-radius:10px;
-font-weight:900}
 .overlay{
 position:fixed;
 inset:0;
@@ -162,172 +170,76 @@ transition:.3s}
 
 <body>
 
-<div class="top-promo" id="promo"></div>
+<div class="topbar">🚀 Extra -10% off ANY Game Pass!</div>
 
-<header class="k4g-header">
-<div class="header-left">
-<div class="logo">NAZWA</div>
-<div class="pill" id="pill"></div>
+<header>
+<div class="logo">K4G</div>
+
+<div class="actions">
+<span>Buy, Play, Help!</span>
+<span>Zarabiaj z K4G</span>
 </div>
 
-<div class="header-center">
+<div class="search">
 <i class="fa fa-search"></i>
-<input id="search">
+<input placeholder="Szukaj">
 </div>
 
 <div class="header-right">
-<select class="select" onchange="setLang(this.value)">
-<option value="pl">PL</option>
-<option value="en">EN</option>
-</select>
-<select class="select" onchange="setCurrency(this.value)">
+<select class="select">
 <option>PLN</option>
 <option>EUR</option>
 <option>USD</option>
 </select>
 <div class="cart-btn" onclick="toggleCart()">
 <i class="fa fa-shopping-cart"></i>
-<span id="cartCount">0</span>
 </div>
 </div>
 </header>
 
-<nav>
-<a id="nav1"></a>
-<a id="nav2"></a>
-<a id="nav3"></a>
-<a id="nav4"></a>
-</nav>
+<section class="main">
+<div class="title">Bestsellery</div>
+<div class="subtitle">Najchętniej kupowane tytuły</div>
 
-<section class="products" id="products"></section>
+<div class="grid">
+
+<!-- CARD -->
+<div class="card">
+<span class="badge">HOT DEAL</span>
+<img src="https://cdn.kinguin.com/media/catalog/product/cache/926507dc7f93631a094422215b778fe0/m/i/minecraft-java-bedrock.jpeg">
+<h4>Minecraft Java & Bedrock Edition</h4>
+<div class="icons">
+<i class="fa fa-key"></i>
+<i class="fa fa-bolt"></i>
+</div>
+<div class="price">
+<span class="old">PLN 148.88</span>
+<span class="new">PLN 50.21</span>
+<span class="discount">-66%</span>
+</div>
+<button class="buy">Kup teraz</button>
+</div>
+
+<!-- PROMO -->
+<div class="promo">
+<h2>PAWSOME DEAL</h2>
+<h3>Get extra -10% with code: FEAR</h3>
+</div>
+
+</div>
+</section>
 
 <div class="cart" id="cart">
-<h3 id="cartTitle"></h3>
-<div id="cartItems"></div>
-<div class="cart-total" id="cartTotal"></div>
+<h3>Koszyk</h3>
 </div>
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
 <script>
-/* ===== STATE ===== */
-let lang="pl";
-let currency="PLN";
-const rates={PLN:1,EUR:0.23,USD:0.26};
-
-const T={
-pl:{
-promo:"🚀 -10% na Game Pass!",
-pill:"Kupuj taniej gry",
-search:"Szukaj gier...",
-nav:["Bestsellery","Gry","Oprogramowanie","Karty"],
-add:"Dodaj do koszyka",
-cart:"Koszyk",
-total:"Razem"
-},
-en:{
-promo:"🚀 Extra -10% on Game Pass!",
-pill:"Buy cheaper games",
-search:"Search games...",
-nav:["Bestsellers","Games","Software","Gift Cards"],
-add:"Add to cart",
-cart:"Your cart",
-total:"Total"
-}
-};
-
-const products=[
-{id:1,title:{pl:"Cyberpunk 2077",en:"Cyberpunk 2077"},price:129,img:"https://cdn.kinguin.com/media/catalog/product/cache/926507dc7f93631a094422215b778fe0/c/y/cyberpunk_2077.jpeg"},
-{id:2,title:{pl:"Minecraft Java & Bedrock",en:"Minecraft Java & Bedrock"},price:37,img:"https://cdn.kinguin.com/media/catalog/product/cache/926507dc7f93631a094422215b778fe0/m/i/minecraft-java-bedrock.jpeg"},
-{id:3,title:{pl:"Windows 11 Pro",en:"Windows 11 Pro"},price:49,img:"https://cdn.kinguin.com/media/catalog/product/cache/926507dc7f93631a094422215b778fe0/w/i/windows_11_pro.jpeg"}
-];
-
-let cart=[];
-
-/* ===== HELPERS ===== */
-const productsEl=document.getElementById("products");
-const cartEl=document.getElementById("cart");
-const overlay=document.getElementById("overlay");
-
-const price=v=>(v*rates[currency]).toFixed(2)+" "+currency;
-
-/* ===== RENDER ===== */
-function render(){
-const t=T[lang];
-promo.innerText=t.promo;
-pill.innerText=t.pill;
-search.placeholder=t.search;
-nav1.innerText=t.nav[0];
-nav2.innerText=t.nav[1];
-nav3.innerText=t.nav[2];
-nav4.innerText=t.nav[3];
-cartTitle.innerText=t.cart;
-renderProducts();
-renderCart();
-}
-
-function renderProducts(){
-productsEl.innerHTML="";
-products.forEach(p=>{
-productsEl.innerHTML+=`
-<div class="product">
-<img src="${p.img}">
-<h4>${p.title[lang]}</h4>
-<div class="price">${price(p.price)}</div>
-<button class="add" onclick="addToCart(${p.id})">${T[lang].add}</button>
-</div>`;
-});
-}
-
-function renderCart(){
-cartItems.innerHTML="";
-let total=0;
-cart.forEach(item=>{
-const p=products.find(x=>x.id===item.id);
-total+=p.price*item.qty;
-cartItems.innerHTML+=`
-<div class="cart-item">
-<img src="${p.img}">
-<div>
-${p.title[lang]}<br>
-${price(p.price*item.qty)}
-<div class="qty">
-<button onclick="chg(${item.id},-1)">-</button>
-${item.qty}
-<button onclick="chg(${item.id},1)">+</button>
-</div>
-</div>
-</div>`;
-});
-cartTotal.innerText=T[lang].total+": "+price(total);
-cartCount.innerText=cart.reduce((a,b)=>a+b.qty,0);
-}
-
-/* ===== ACTIONS ===== */
-function addToCart(id){
-const item=cart.find(x=>x.id===id);
-if(item)item.qty++;
-else cart.push({id,qty:1});
-renderCart();
-}
-
-function chg(id,d){
-const item=cart.find(x=>x.id===id);
-item.qty+=d;
-if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
-renderCart();
-}
-
 function toggleCart(){
-cartEl.classList.toggle("active");
+cart.classList.toggle("active");
 overlay.classList.toggle("active");
 }
-function setLang(l){lang=l;render();}
-function setCurrency(c){currency=c;render();}
-
-/* INIT */
-render();
 </script>
 
 </body>
 </html>
-
