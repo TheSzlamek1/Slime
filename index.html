@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>NAZWA – Premium Game Store</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 <style>
+/* ==== BASE ==== */
 *{box-sizing:border-box}
 body{
 margin:0;
@@ -15,7 +14,7 @@ background:radial-gradient(circle at top,#171933 0%,#0b0d1a 60%);
 color:#e6e6eb}
 a{text-decoration:none;color:inherit}
 
-/* TOP */
+/* ==== TOP ==== */
 .top-promo{
 background:linear-gradient(90deg,#c81515,#ff3b3b);
 padding:7px;
@@ -23,7 +22,7 @@ font-size:13px;
 font-weight:800;
 text-align:center}
 
-/* HEADER */
+/* ==== HEADER ==== */
 .k4g-header{
 display:grid;
 grid-template-columns:auto 1fr auto;
@@ -59,8 +58,22 @@ padding:8px 12px;
 border-radius:999px;
 border:none;
 color:#fff}
+.cart-btn{
+background:#1b1d3a;
+padding:8px 14px;
+border-radius:999px;
+cursor:pointer;
+position:relative}
+#cartCount{
+position:absolute;
+top:-6px;
+right:-6px;
+background:#37c807;
+font-size:11px;
+padding:2px 6px;
+border-radius:50%}
 
-/* NAV */
+/* ==== NAV ==== */
 nav{
 display:flex;
 gap:28px;
@@ -68,23 +81,14 @@ padding:15px 40px;
 background:#14162f;
 border-bottom:1px solid #1f2140}
 
-/* HERO */
-.hero{
-padding:70px 40px;
-display:grid;
-grid-template-columns:1.2fr .8fr;
-gap:40px;
-align-items:center}
-.hero h1{font-size:42px}
-
-/* PRODUCTS */
+/* ==== PRODUCTS ==== */
 .products{
 padding:40px;
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
 gap:30px}
 .product{
-background:#1a1c3b;
+background:linear-gradient(180deg,#1a1c3b,#14162f);
 border-radius:16px;
 border:1px solid #262965;
 overflow:hidden}
@@ -92,7 +96,7 @@ overflow:hidden}
 .product h4{padding:14px;font-size:15px}
 .price{
 margin:10px 14px;
-background:#ff3b3b;
+background:linear-gradient(90deg,#ff3b3b,#ff6b6b);
 padding:9px;
 border-radius:10px;
 text-align:center;
@@ -103,21 +107,23 @@ width:calc(100% - 28px);
 padding:12px;
 border:none;
 border-radius:10px;
-background:#00d162;
+background:linear-gradient(90deg,#00d162,#00ff87);
 font-weight:900;
 cursor:pointer}
 
-/* CART */
+/* ==== CART ==== */
 .cart{
 position:fixed;
 top:0;
 right:-380px;
 width:380px;
 height:100vh;
-background:#101226;
+background:linear-gradient(180deg,#16183a,#101226);
 padding:20px;
 transition:.35s;
-z-index:1000}
+z-index:1000;
+display:flex;
+flex-direction:column}
 .cart.active{right:0}
 .cart-item{
 display:flex;
@@ -127,38 +133,30 @@ padding:8px;
 border-radius:8px;
 margin-bottom:10px}
 .cart-item img{width:52px;height:52px;border-radius:6px}
+.qty{display:flex;gap:6px;margin-top:4px}
 .qty button{
 background:#ff3b3b;
 border:none;
 color:#fff;
-width:22px;height:22px;cursor:pointer}
+width:22px;
+height:22px;
+border-radius:4px;
+cursor:pointer}
+.cart-total{
+margin-top:auto;
+background:#0b0d1a;
+padding:14px;
+text-align:center;
+border-radius:10px;
+font-weight:900}
 .overlay{
 position:fixed;
 inset:0;
 background:rgba(0,0,0,.6);
 opacity:0;
-visibility:hidden}
+visibility:hidden;
+transition:.3s}
 .overlay.active{opacity:1;visibility:visible}
-
-/* WHY */
-.why{
-padding:60px 40px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:30px}
-.why-box{
-background:#1b1d3a;
-padding:26px;
-border-radius:14px;
-text-align:center}
-
-/* FOOTER */
-footer{
-background:#0b0d1a;
-padding:50px 40px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:40px}
 </style>
 </head>
 
@@ -187,7 +185,10 @@ gap:40px}
 <option>EUR</option>
 <option>USD</option>
 </select>
-<button class="select" onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
+<div class="cart-btn" onclick="toggleCart()">
+<i class="fa fa-shopping-cart"></i>
+<span id="cartCount">0</span>
+</div>
 </div>
 </header>
 
@@ -198,36 +199,17 @@ gap:40px}
 <a id="nav4"></a>
 </nav>
 
-<section class="hero">
-<div>
-<h1 id="heroTitle"></h1>
-<p id="heroDesc"></p>
-</div>
-<img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f" style="width:100%;border-radius:20px">
-</section>
-
 <section class="products" id="products"></section>
-
-<section class="why">
-<div class="why-box" id="why1"></div>
-<div class="why-box" id="why2"></div>
-<div class="why-box" id="why3"></div>
-<div class="why-box" id="why4"></div>
-</section>
-
-<footer>
-<div><h4 id="f1"></h4></div>
-<div><h4 id="f2"></h4></div>
-</footer>
 
 <div class="cart" id="cart">
 <h3 id="cartTitle"></h3>
 <div id="cartItems"></div>
-<div id="cartTotal"></div>
+<div class="cart-total" id="cartTotal"></div>
 </div>
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
 <script>
+/* ===== STATE ===== */
 let lang="pl";
 let currency="PLN";
 const rates={PLN:1,EUR:0.23,USD:0.26};
@@ -238,26 +220,18 @@ promo:"🚀 -10% na Game Pass!",
 pill:"Kupuj taniej gry",
 search:"Szukaj gier...",
 nav:["Bestsellery","Gry","Oprogramowanie","Karty"],
-heroTitle:"Kupuj gry taniej. Graj od razu.",
-heroDesc:"Klucze cyfrowe • Natychmiastowa dostawa",
 add:"Dodaj do koszyka",
 cart:"Koszyk",
-total:"Razem",
-why:["Natychmiastowa dostawa","Bezpieczne płatności","Najlepsze ceny","24/7 Support"],
-footer:["Sklep","Pomoc"]
+total:"Razem"
 },
 en:{
 promo:"🚀 Extra -10% on Game Pass!",
 pill:"Buy cheaper games",
 search:"Search games...",
 nav:["Bestsellers","Games","Software","Gift Cards"],
-heroTitle:"Buy games cheaper. Play instantly.",
-heroDesc:"Digital keys • Instant delivery",
 add:"Add to cart",
 cart:"Your cart",
-total:"Total",
-why:["Instant delivery","Secure payments","Best prices","24/7 Support"],
-footer:["Store","Support"]
+total:"Total"
 }
 };
 
@@ -268,10 +242,15 @@ const products=[
 ];
 
 let cart=[];
+
+/* ===== HELPERS ===== */
 const productsEl=document.getElementById("products");
+const cartEl=document.getElementById("cart");
+const overlay=document.getElementById("overlay");
 
-function price(v){return (v*rates[currency]).toFixed(2)+" "+currency;}
+const price=v=>(v*rates[currency]).toFixed(2)+" "+currency;
 
+/* ===== RENDER ===== */
 function render(){
 const t=T[lang];
 promo.innerText=t.promo;
@@ -281,15 +260,7 @@ nav1.innerText=t.nav[0];
 nav2.innerText=t.nav[1];
 nav3.innerText=t.nav[2];
 nav4.innerText=t.nav[3];
-heroTitle.innerText=t.heroTitle;
-heroDesc.innerText=t.heroDesc;
 cartTitle.innerText=t.cart;
-why1.innerText=t.why[0];
-why2.innerText=t.why[1];
-why3.innerText=t.why[2];
-why4.innerText=t.why[3];
-f1.innerText=t.footer[0];
-f2.innerText=t.footer[1];
 renderProducts();
 renderCart();
 }
@@ -307,49 +278,53 @@ productsEl.innerHTML+=`
 });
 }
 
-function addToCart(id){
-let item=cart.find(x=>x.id===id);
-if(item)item.q++;
-else{
-let p=products.find(x=>x.id===id);
-cart.push({...p,q:1});
-}
-renderCart();
-}
-
 function renderCart(){
 cartItems.innerHTML="";
 let total=0;
-cart.forEach((p,i)=>{
-total+=p.price*p.q;
+cart.forEach(item=>{
+const p=products.find(x=>x.id===item.id);
+total+=p.price*item.qty;
 cartItems.innerHTML+=`
 <div class="cart-item">
 <img src="${p.img}">
 <div>
 ${p.title[lang]}<br>
-${p.q} x ${price(p.price)}<br>
-<button onclick="chg(${i},-1)">-</button>
-<button onclick="chg(${i},1)">+</button>
+${price(p.price*item.qty)}
+<div class="qty">
+<button onclick="chg(${item.id},-1)">-</button>
+${item.qty}
+<button onclick="chg(${item.id},1)">+</button>
+</div>
 </div>
 </div>`;
 });
 cartTotal.innerText=T[lang].total+": "+price(total);
-cartCount.innerText=cart.reduce((a,b)=>a+b.q,0);
+cartCount.innerText=cart.reduce((a,b)=>a+b.qty,0);
 }
 
-function chg(i,d){
-cart[i].q+=d;
-if(cart[i].q<=0)cart.splice(i,1);
+/* ===== ACTIONS ===== */
+function addToCart(id){
+const item=cart.find(x=>x.id===id);
+if(item)item.qty++;
+else cart.push({id,qty:1});
+renderCart();
+}
+
+function chg(id,d){
+const item=cart.find(x=>x.id===id);
+item.qty+=d;
+if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
 renderCart();
 }
 
 function toggleCart(){
-cart.classList.toggle("active");
+cartEl.classList.toggle("active");
 overlay.classList.toggle("active");
 }
 function setLang(l){lang=l;render();}
 function setCurrency(c){currency=c;render();}
 
+/* INIT */
 render();
 </script>
 
