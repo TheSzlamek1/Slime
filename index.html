@@ -1,28 +1,28 @@
-<?php
-session_start();
-$offers = json_decode(file_get_contents('data/offers.json'), true);
-?>
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-<title>Marketplace G2A-like</title>
-<style>
-body{background:#0f0f0f;color:#eee;font-family:Arial}
-.card{border:1px solid #333;padding:15px;margin:15px}
-a{color:#6cf}
-</style>
+    <meta charset="UTF-8">
+    <title>Sklep</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Marketplace gier</h1>
-<a href="login.php">Login</a> | <a href="register.php">Rejestracja</a>
-<hr>
-<?php foreach($offers as $id=>$o): if(!$o['active']) continue; ?>
-<div class="card">
-<h3><?=htmlspecialchars($o['title'])?></h3>
-<p>Cena: <?= $o['price'] ?> PLN</p>
-<p>Sprzedawca: <?=htmlspecialchars($o['seller'])?></p>
-<a href="buy.php?id=<?=$id?>">Kup</a>
+
+<header>
+    <h1>Mój Sklep</h1>
+    <button onclick="showCart()">🛒 Koszyk</button>
+    <a href="admin.html">Panel admina</a>
+</header>
+
+<main id="products"></main>
+
+<div id="cart" class="modal">
+    <h2>Koszyk</h2>
+    <ul id="cartItems"></ul>
+    <button onclick="checkout()">Zamów</button>
+    <button onclick="closeCart()">Zamknij</button>
 </div>
-<?php endforeach; ?>
+
+<script src="script.js"></script>
 </body>
 </html>
+
