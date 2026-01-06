@@ -1,21 +1,27 @@
 <?php
 session_start();
-$products = json_decode(file_get_contents('data/products.json'), true);
+$offers = json_decode(file_get_contents('data/offers.json'), true);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/style.css">
+<title>Marketplace G2A-like</title>
+<style>
+body{background:#0f0f0f;color:#eee;font-family:Arial}
+.card{border:1px solid #333;padding:15px;margin:15px}
+a{color:#6cf}
+</style>
 </head>
 <body>
-<h1>Sklep z grami</h1>
-<a href="login.php">Logowanie</a> | <a href="register.php">Rejestracja</a>
+<h1>Marketplace gier</h1>
+<a href="login.php">Login</a> | <a href="register.php">Rejestracja</a>
 <hr>
-<?php foreach($products as $p): if(!$p['active']) continue; ?>
+<?php foreach($offers as $id=>$o): if(!$o['active']) continue; ?>
 <div class="card">
-<h3><?=htmlspecialchars($p['name'])?></h3>
-<p><?=htmlspecialchars($p['description'])?></p>
-<b><?= $p['price'] ?> PLN</b>
+<h3><?=htmlspecialchars($o['title'])?></h3>
+<p>Cena: <?= $o['price'] ?> PLN</p>
+<p>Sprzedawca: <?=htmlspecialchars($o['seller'])?></p>
+<a href="buy.php?id=<?=$id?>">Kup</a>
 </div>
 <?php endforeach; ?>
 </body>
