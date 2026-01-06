@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
 <meta charset="UTF-8">
 <title>NAZWA – Premium Game Store</title>
@@ -37,10 +37,7 @@ border-bottom:1px solid #1f2140}
 background:#1b1d3a;
 padding:8px 14px;
 border-radius:999px;
-font-size:13px;
-display:flex;
-gap:6px;
-align-items:center}
+font-size:13px}
 .header-center{position:relative;max-width:520px;width:100%}
 .header-center input{
 width:100%;
@@ -55,27 +52,13 @@ top:50%;
 left:14px;
 transform:translateY(-50%);
 opacity:.7}
-.header-right{display:flex;gap:12px;align-items:center}
+.header-right{display:flex;gap:10px;align-items:center}
 .select{
 background:#1b1d3a;
-padding:8px 14px;
+padding:8px 12px;
 border-radius:999px;
 border:none;
 color:#fff}
-.cart-btn{
-background:#1b1d3a;
-padding:8px 14px;
-border-radius:999px;
-cursor:pointer;
-position:relative}
-#cartCount{
-position:absolute;
-top:-6px;
-right:-6px;
-background:#37c807;
-font-size:11px;
-padding:2px 6px;
-border-radius:50%}
 
 /* NAV */
 nav{
@@ -84,7 +67,6 @@ gap:28px;
 padding:15px 40px;
 background:#14162f;
 border-bottom:1px solid #1f2140}
-nav a{color:#bfc2ff;font-weight:600}
 
 /* HERO */
 .hero{
@@ -94,14 +76,6 @@ grid-template-columns:1.2fr .8fr;
 gap:40px;
 align-items:center}
 .hero h1{font-size:42px}
-.hero button{
-margin-top:20px;
-padding:14px 22px;
-border:none;
-border-radius:10px;
-background:#ff3b3b;
-color:#fff;
-font-weight:900}
 
 /* PRODUCTS */
 .products{
@@ -130,7 +104,8 @@ padding:12px;
 border:none;
 border-radius:10px;
 background:#00d162;
-font-weight:900}
+font-weight:900;
+cursor:pointer}
 
 /* CART */
 .cart{
@@ -156,7 +131,7 @@ margin-bottom:10px}
 background:#ff3b3b;
 border:none;
 color:#fff;
-width:22px;height:22px}
+width:22px;height:22px;cursor:pointer}
 .overlay{
 position:fixed;
 inset:0;
@@ -164,6 +139,18 @@ background:rgba(0,0,0,.6);
 opacity:0;
 visibility:hidden}
 .overlay.active{opacity:1;visibility:visible}
+
+/* WHY */
+.why{
+padding:60px 40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px}
+.why-box{
+background:#1b1d3a;
+padding:26px;
+border-radius:14px;
+text-align:center}
 
 /* FOOTER */
 footer{
@@ -182,12 +169,12 @@ gap:40px}
 <header class="k4g-header">
 <div class="header-left">
 <div class="logo">NAZWA</div>
-<div class="pill" id="pill1"></div>
+<div class="pill" id="pill"></div>
 </div>
 
 <div class="header-center">
 <i class="fa fa-search"></i>
-<input id="search" placeholder="">
+<input id="search">
 </div>
 
 <div class="header-right">
@@ -195,17 +182,12 @@ gap:40px}
 <option value="pl">PL</option>
 <option value="en">EN</option>
 </select>
-
 <select class="select" onchange="setCurrency(this.value)">
-<option value="PLN">PLN</option>
-<option value="EUR">EUR</option>
-<option value="USD">USD</option>
+<option>PLN</option>
+<option>EUR</option>
+<option>USD</option>
 </select>
-
-<div class="cart-btn" onclick="toggleCart()">
-<i class="fa fa-shopping-cart"></i>
-<span id="cartCount">0</span>
-</div>
+<button class="select" onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
 </div>
 </header>
 
@@ -220,24 +202,22 @@ gap:40px}
 <div>
 <h1 id="heroTitle"></h1>
 <p id="heroDesc"></p>
-<button id="heroBtn"></button>
 </div>
 <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f" style="width:100%;border-radius:20px">
 </section>
 
 <section class="products" id="products"></section>
 
+<section class="why">
+<div class="why-box" id="why1"></div>
+<div class="why-box" id="why2"></div>
+<div class="why-box" id="why3"></div>
+<div class="why-box" id="why4"></div>
+</section>
+
 <footer>
-<div>
-<h4 id="f1"></h4>
-<a id="f1a"></a>
-<a id="f1b"></a>
-</div>
-<div>
-<h4 id="f2"></h4>
-<a id="f2a"></a>
-<a id="f2b"></a>
-</div>
+<div><h4 id="f1"></h4></div>
+<div><h4 id="f2"></h4></div>
 </footer>
 
 <div class="cart" id="cart">
@@ -250,23 +230,21 @@ gap:40px}
 <script>
 let lang="pl";
 let currency="PLN";
-
 const rates={PLN:1,EUR:0.23,USD:0.26};
 
-const translations={
+const T={
 pl:{
 promo:"🚀 -10% na Game Pass!",
 pill:"Kupuj taniej gry",
 search:"Szukaj gier...",
-nav:["Bestsellery","Gry","Oprogramowanie","Karty podarunkowe"],
+nav:["Bestsellery","Gry","Oprogramowanie","Karty"],
 heroTitle:"Kupuj gry taniej. Graj od razu.",
 heroDesc:"Klucze cyfrowe • Natychmiastowa dostawa",
-heroBtn:"Zobacz oferty",
+add:"Dodaj do koszyka",
 cart:"Koszyk",
 total:"Razem",
-add:"Dodaj do koszyka",
-footer1:"Sklep",
-footer2:"Pomoc"
+why:["Natychmiastowa dostawa","Bezpieczne płatności","Najlepsze ceny","24/7 Support"],
+footer:["Sklep","Pomoc"]
 },
 en:{
 promo:"🚀 Extra -10% on Game Pass!",
@@ -275,12 +253,11 @@ search:"Search games...",
 nav:["Bestsellers","Games","Software","Gift Cards"],
 heroTitle:"Buy games cheaper. Play instantly.",
 heroDesc:"Digital keys • Instant delivery",
-heroBtn:"Browse deals",
+add:"Add to cart",
 cart:"Your cart",
 total:"Total",
-add:"Add to cart",
-footer1:"Store",
-footer2:"Support"
+why:["Instant delivery","Secure payments","Best prices","24/7 Support"],
+footer:["Store","Support"]
 }
 };
 
@@ -291,13 +268,14 @@ const products=[
 ];
 
 let cart=[];
+const productsEl=document.getElementById("products");
 
 function price(v){return (v*rates[currency]).toFixed(2)+" "+currency;}
 
 function render(){
-const t=translations[lang];
+const t=T[lang];
 promo.innerText=t.promo;
-pill1.innerText=t.pill;
+pill.innerText=t.pill;
 search.placeholder=t.search;
 nav1.innerText=t.nav[0];
 nav2.innerText=t.nav[1];
@@ -305,8 +283,13 @@ nav3.innerText=t.nav[2];
 nav4.innerText=t.nav[3];
 heroTitle.innerText=t.heroTitle;
 heroDesc.innerText=t.heroDesc;
-heroBtn.innerText=t.heroBtn;
 cartTitle.innerText=t.cart;
+why1.innerText=t.why[0];
+why2.innerText=t.why[1];
+why3.innerText=t.why[2];
+why4.innerText=t.why[3];
+f1.innerText=t.footer[0];
+f2.innerText=t.footer[1];
 renderProducts();
 renderCart();
 }
@@ -319,14 +302,15 @@ productsEl.innerHTML+=`
 <img src="${p.img}">
 <h4>${p.title[lang]}</h4>
 <div class="price">${price(p.price)}</div>
-<button class="add" onclick="add(${p.id})">${translations[lang].add}</button>
+<button class="add" onclick="addToCart(${p.id})">${T[lang].add}</button>
 </div>`;
 });
 }
 
-function add(id){
-let f=cart.find(x=>x.id===id);
-if(f)f.q++;else{
+function addToCart(id){
+let item=cart.find(x=>x.id===id);
+if(item)item.q++;
+else{
 let p=products.find(x=>x.id===id);
 cart.push({...p,q:1});
 }
@@ -336,26 +320,33 @@ renderCart();
 function renderCart(){
 cartItems.innerHTML="";
 let total=0;
-cart.forEach(p=>{
+cart.forEach((p,i)=>{
 total+=p.price*p.q;
 cartItems.innerHTML+=`
 <div class="cart-item">
 <img src="${p.img}">
 <div>
 ${p.title[lang]}<br>
-${p.q} x ${price(p.price)}
+${p.q} x ${price(p.price)}<br>
+<button onclick="chg(${i},-1)">-</button>
+<button onclick="chg(${i},1)">+</button>
 </div>
 </div>`;
 });
-cartTotal.innerText=translations[lang].total+": "+price(total);
+cartTotal.innerText=T[lang].total+": "+price(total);
 cartCount.innerText=cart.reduce((a,b)=>a+b.q,0);
+}
+
+function chg(i,d){
+cart[i].q+=d;
+if(cart[i].q<=0)cart.splice(i,1);
+renderCart();
 }
 
 function toggleCart(){
 cart.classList.toggle("active");
 overlay.classList.toggle("active");
 }
-
 function setLang(l){lang=l;render();}
 function setCurrency(c){currency=c;render();}
 
